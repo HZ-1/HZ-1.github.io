@@ -4,6 +4,7 @@ db.json
 *.log
 .idea/
 scaffolds/
+public/
 source/
 themes/
 node_modules/
