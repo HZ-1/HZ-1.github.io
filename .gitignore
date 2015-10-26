@@ -1,2 +1,10 @@
-_site/
-.sass-cache/
+.DS_Store
+Thumbs.db
+db.json
+*.log
+.idea/
+scaffolds/
+source/
+themes/
+node_modules/
+.deploy*/
