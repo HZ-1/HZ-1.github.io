@@ -1,7 +1,7 @@
-export const newdux = (state=[],action)=>{
+export const tyyReducer = (state=[], action)=>{
   switch (action.type){
-    case 'ADD':
-        console.log('ADD---redcer')
+    case 'TYY':
+        console.log('TYY---redcer')
       return [
           {
         text:action.text,
@@ -9,7 +9,7 @@ export const newdux = (state=[],action)=>{
         completed:false,
       }];
     default :
-        console.log('ADD--default--redcer')
+      console.log('TYY--default--redcer')
       return state;
   }
 }

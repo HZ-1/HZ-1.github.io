@@ -1,7 +1,7 @@
-export const reduxTwo = (state=[],action)=>{
+export const addRedux = (state=[],action)=>{
   switch (action.type){
-    case 'TYY':
-        console.log('TYY---redcer')
+    case 'ADD':
+        console.log('ADD---redcer')
       return [
           {
         text:action.text,
@@ -9,7 +9,7 @@ export const reduxTwo = (state=[],action)=>{
         completed:false,
       }];
     default :
-      console.log('TYY--default--redcer')
+        console.log('ADD--default--redcer')
       return state;
   }
 }

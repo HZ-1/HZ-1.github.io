@@ -11,29 +11,10 @@ class App extends Component {
     }
     this.vv=8
   }
-  componentWillReceiveProps(){
-    // console.log(`App---xiongdi1111`)
-  }
-
-  prof=()=>{
-    const aa = new Promise((r,j)=>{
-      console.log('p-set')
-        this.setState({aaa:this.state.aaa+1});
-        r();
-    })
-      Promise.all([aa]).then(e=>{
-        console.log('all')
-      }).catch(t=>console.log(t))
-  }
-
-  componentDidUpdate(){
-    console.log(`App:::componentDidUpdate`)
-  }
   render() {
-    console.log(666666662)
+    console.log('app---render!!!!')
     return (
         <div>
-          <div onClick={this.prof}>超级父级1111{this.state.aaa}</div>
           <div onClick={()=>this.props.abc2(this.vv++)}>超级父级1</div>
           <Fa/>
           <Br/>
@@ -42,9 +23,9 @@ class App extends Component {
   }
 }
 // export default App;
-const mapStateToProps = ({newdux=[]})=>{
+const mapStateToProps = ({addRedux})=>{
   console.log('App---mapStateToProps')
-  return ({newdux})
+  return ({addRedux})
 };
 
 let num1=1;

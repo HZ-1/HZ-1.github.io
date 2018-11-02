@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-// import Chl from './chl';
-// import Ch2 from './ch2';
-// import Ch22 from './ch2-2';
-// import Ch3 from './chl3';
+import {addRedux} from "./addReducer";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +18,7 @@ this.num =1;
 
 
   componentWillReceiveProps(nect){
-    const aa = nect.newdux&&nect.newdux[0]&&nect.newdux[0].text;
+    const aa = nect.addRedux&&nect.addRedux[0]&&nect.addRedux[0].text;
     // console.log(`Fa componentWillReceiveProps::::${aa}`)
     // this.setState({inputV:aa})
     // console.log(`Fa::::componentWillReceiveProps`)
@@ -39,118 +36,17 @@ this.num =1;
     return <input  key={9999} value={this.state.tiv} onChange={this.changeF}/>
   }
 
-  ddd = ()=>{
-
-    // let reqUrl = 'timg?image&quality=80&size=b9999_10000&sec=1540219218987&di=63f69397582b802b21af29f8260763c4&imgtype=0&src=http%3A%2F%2Fwww.6300.net%2Fupload%2Fproduct%2F2014%2F01%2F26%2F14300872.jpg'
-    let reqUrl = '/fileService/downloadFile.jspx?fileid=20181009195609275E9BB1101'
-    // let reqUrl = 'fileService/downloadFile.jspx?fileid=20181009195609338FC48337C'
-    let filename = 'ttttimg.xlsx';
-
-      // //
-      // const headers = new Headers({
-      //     "Accept": "application/json",
-      //     "Content-Type": "application/json"
-      // });
-      //
-      //  fetch(reqUrl, {
-      //     method: "GET",
-      //     // headers: headers,
-      // }).then(response => {
-      //     console.log(response)
-      //     if(response.status < 500){
-      //         console.log(response.getResponseHeader)
-      //         return response.blob();
-      //
-      //     }else{
-      //         console.log(2)
-      //     }
-      // }).then(e=>{
-      //      var url = window.URL.createObjectURL(e);   // 获取 blob 本地文件连接 (blob 为纯二进制对象，不能够直接保存到磁盘上)
-      //      var a = document.createElement('a');
-      //      a.href = url;
-      //      a.download = decodeURIComponent(filename);
-      //      // document.body.appendChild(a);
-      //      //
-      //      a.click();
-      //      // setTimeout(function(){
-      //      //     document.body.removeChild(a);
-      //      //     window.URL.revokeObjectURL(url);
-      //      // },1000);
-      //
-      //
-      //  }).catch(err => {
-      //      console.log(err)
-      //     // console.error(`Request failed. Url = ${url} . Message = ${err}`);
-      //     // return {error: {message: "Request failed."}};
-      // })
-
-
-
-      //通用清单
-      // $('#tongyong_btn').on('click', function () {
-      //     console.log(9999)
-      //     // var areaId = "420222";
-      //     var areaIdN = "420222";
-      //     var areaIdS = String(areaIdN);
-      //     var areaId = areaIdS.substr(0, 6);
-      //     var str = String(areaId)
-      //     var cityStr = str.substr(4, 2)
-      //     if (areaId == "429004" || areaId == "429005" || areaId == '429006' || areaId == '429021') {
-      //         window.open('http://zwfw.hubei.gov.cn/fileService/downloadFile.jspx?fileid=20181009195609275E9BB1101')
-      //     } else if (cityStr == '00') {
-      //         window.open('http://zwfw.hubei.gov.cn/fileService/downloadFile.jspx?fileid=20181009195609275E9BB1101')
-      //     } else {
-      //         window.open('http://zwfw.hubei.gov.cn/fileService/downloadFile.jspx?fileid=20181009195609338FC48337C')
-      //     }
-      // })
-
-
-
-
-
-    // fetch()
-
-    // window.location.href = reqUrl;
-      var xhr = new XMLHttpRequest();
-      xhr.open("get", reqUrl, true);
-      xhr.responseType = "blob";
-      xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-              console.log(33)
-              var data = xhr.response;
-              console.log(2223)
-              var link = document.createElement('a');
-              link.href =
-                  window.URL.createObjectURL(data);
-              link.download = filename;
-              link.click();
-          }
-      };
-
-      xhr.send();
-  }
 
 
   render() {
     console.log('Fa-render999999999999999999||||||||||||||||||||')
-                          return (
+      return (
         <div className="container" style={{background:'blue',padding:'20px'}}>
-          {/*<div onClick={()=>{this.cssd.a=999;  this.setState({co:{...this.cssd}  })}}>fa组件{this.state.co.a}</div>*/}
-          <div onClick={this.ddd}>fa组件{this.state.co.a}</div>
-            {/*{this.content(this.iflag)}*/}
+          <div onClick={()=>this.props.qqw(++this.num)}>fa组件--点击触发tyy</div>
+          <div onClick={()=>this.props.noa(++this.num)}>点击触发nono</div>
             <input type="text" value={this.state.inputV} onChange={v=>{
-            // console.log(this.props)
             this.props.abc(++this.num);
-            // this.setState({inputV:v.target.value,co:this.cssd })
-            //   this.cssd.a=888;
-            //   this.setState({co:{...this.cssd} })
           }}/>
-            99
-          {/*<Chl aaaw={(c)=>{ console.log(5)}} />*/}
-          {/*<Chl aaa={5} />*/}
-          {/*<Chl ccd={{a:66}} />*/}
-          {/*<Ch2 uu={this.state.co}/>*/}
         </div>
     );
   }
@@ -159,25 +55,42 @@ let num = 1;
 const mapDispatchToProps = (dispatch)=>{
   return {
     abc:aaa=>{
-        console.log('add')
+        console.log('ADD')
       dispatch({
-        type:'TYY',
-        // type:'ADD',
+        type:'ADD',
         id:num++,
         text:aaa,
 
       })
-    }
+    },
+      qqw:aaa=>{
+          console.log('TYY')
+          dispatch({
+              type:'TYY',
+              id:num++,
+              text:aaa,
+
+          })
+      },
+      noa:aaa=>{
+          console.log('nono')
+          dispatch({
+              type:'nono',
+              id:num++,
+              text:aaa,
+
+          })
+      }
   }
 }
-// const mapStateToProps = (state)=>{
-//     console.log('fa---mapStateToProps')
-//   return ({newdux:state.newdux})
-// };
-const mapStateToProps = ({newdux})=>{
+const mapStateToProps = (state)=>{
     console.log('fa---mapStateToProps')
-    return ({newdux})
+  return ({addRedux:state.addRedux})
 };
+// const mapStateToProps = ({addRedux})=>{
+//     console.log('fa---mapStateToProps')
+//     return ({addRedux})
+// };
 
 // export default connect(mapStateToProps,null)(App);
 // export default connect(null,mapDispatchToProps)(App);
