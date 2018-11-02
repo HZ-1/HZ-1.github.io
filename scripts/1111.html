@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    ddd = (filename='ddd.png')=>{
+
+        let reqUrl = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540219218987&di=63f69397582b802b21af29f8260763c4&imgtype=0&src=http%3A%2F%2Fwww.6300.net%2Fupload%2Fproduct%2F2014%2F01%2F26%2F14300872.jpg'
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", reqUrl, true);
+
+        // //监听
+        xhr.responseType = "blob";
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var data = xhr.response;
+                if (typeof window.chrome !== 'undefined') {
+                    // Chrome version
+                    var link = document.createElement('a');
+                    link.href =
+                        window.URL.createObjectURL(data);
+                    link.download = filename;
+                    link.click();
+                } else if (typeof window.navigator.msSaveBlob !== 'undefined') {
+                    // IE version
+                    var blob = new Blob([data], { type: 'application/force-download' });
+                    window.navigator.msSaveBlob(blob, filename);
+                } else {
+                    // Firefox version
+                    var file = new File([data], filename, { type: 'application/force-download' });
+                    window.open(URL.createObjectURL(file));
+                }
+            }
+        };
+
+        xhr.send();
+    }
+</script>
+
+</body>
+</html>

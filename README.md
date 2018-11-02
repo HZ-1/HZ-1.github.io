@@ -1,2 +1,9 @@
-# HZ-1.github.io
-个人博客站点，主要记录学习历程.
+# 诱人的 react - 基础篇
+
+原文发布于我的个人博客：https://www.rails365.net/playlists/you-ren-de-react-shi-pin-jiao-cheng-ji-chu-pian
+
+### 联系我:
+
+email: hfpp2012@gmail.com
+
+qq: 903279182
