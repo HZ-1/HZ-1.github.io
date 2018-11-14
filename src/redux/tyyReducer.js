@@ -1,7 +1,7 @@
 export const tyyReducer = (state=[], action)=>{
   switch (action.type){
     case 'TYY':
-        console.log('TYY---redcer')
+        // console.log('TYY---redcer')
       return [
           {
         text:action.text,
@@ -9,7 +9,7 @@ export const tyyReducer = (state=[], action)=>{
         completed:false,
       }];
     default :
-      console.log('TYY--default--redcer')
+      // console.log('TYY--default--redcer')
       return state;
   }
 }

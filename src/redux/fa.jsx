@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {addRedux} from "./addReducer";
-
+import {connect} from '../../node_modules/react-redux/lib';
+import {tyyReducer} from "./tyyReducer";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -41,12 +40,10 @@ this.num =1;
   render() {
     console.log('Fa-render999999999999999999||||||||||||||||||||')
       return (
-        <div className="container" style={{background:'blue',padding:'20px'}}>
+        <div className="container" style={{background:'grey',padding:'20px'}}>
           <div onClick={()=>this.props.qqw(++this.num)}>fa组件--点击触发tyy</div>
           <div onClick={()=>this.props.noa(++this.num)}>点击触发nono</div>
-            <input type="text" value={this.state.inputV} onChange={v=>{
-            this.props.abc(++this.num);
-          }}/>
+          <div onClick={()=>this.props.abc(++this.num)}>点击触发add</div>
         </div>
     );
   }
@@ -55,7 +52,7 @@ let num = 1;
 const mapDispatchToProps = (dispatch)=>{
   return {
     abc:aaa=>{
-        console.log('ADD')
+        // console.log('ADD')
       dispatch({
         type:'ADD',
         id:num++,
@@ -64,7 +61,7 @@ const mapDispatchToProps = (dispatch)=>{
       })
     },
       qqw:aaa=>{
-          console.log('TYY')
+          // console.log('TYY')
           dispatch({
               type:'TYY',
               id:num++,
@@ -73,7 +70,7 @@ const mapDispatchToProps = (dispatch)=>{
           })
       },
       noa:aaa=>{
-          console.log('nono')
+          // console.log('nono')
           dispatch({
               type:'nono',
               id:num++,
@@ -84,7 +81,9 @@ const mapDispatchToProps = (dispatch)=>{
   }
 }
 const mapStateToProps = (state)=>{
-    console.log('fa---mapStateToProps')
+    console.log(state.addRedux[0])
+    console.log(state.tyyReducer)
+    // console.log('fa---mapStateToProps')
   return ({addRedux:state.addRedux})
 };
 // const mapStateToProps = ({addRedux})=>{
@@ -97,3 +96,6 @@ const mapStateToProps = (state)=>{
 export default connect(mapStateToProps,mapDispatchToProps)(App);
 // export default connect(null,null)(App);
 // export default App;
+
+
+

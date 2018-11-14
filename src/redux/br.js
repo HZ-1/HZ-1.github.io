@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {connect} from 'react-redux';
+import {connect} from '../../node_modules/react-redux/lib';
 
 class Br extends Component{
   constructor(props){
@@ -23,7 +23,7 @@ class Br extends Component{
 }
 
 const mapStateToProps = ({tyyReducer=[]})=>{
-    console.log(`Br---mapStateToProps`)
+    // console.log(`Br---mapStateToProps`)
   return ({www:tyyReducer})
 };
 // const mapStateToProps = (state)=>{
