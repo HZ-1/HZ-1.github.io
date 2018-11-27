@@ -362,6 +362,16 @@ function dd() {
 }
 dd(1,3)
 ```
+```
+巧妙函数写法和传参数方法：
+//传参中后面的={}写得妙，没有那个，这样调用connect(1)就会报错，ab undefined，
+function connect(u,{ab=9,...op}={}) {
+    console.log(u);//1
+    console.log(ab);//2
+    console.log(op);//{ cd: 99, er: 123 }
+}
+connect(1,{ab:2,cd:99,er:123})
+```
 
 
 
